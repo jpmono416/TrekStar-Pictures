@@ -14,13 +14,13 @@ Stack::~Stack()
 void Stack::emptyStack()
 {
 	
-	for ()
+	/*for ()
 	{
 
-	}
+	}*/
 }
 
-Project Stack::pop()
-{
-
-}
+//Project Stack::pop()
+//{
+//	
+//}
