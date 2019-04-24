@@ -15,15 +15,15 @@ public:
 	//virtual int* calcRunTime() = 0;
 	void setid(int id);
 	void setTitle(std::string title);
-	void setVideoFormat(VideoFormats videoFormat);
-	void setAudioFormat(AudioFormats audioFormat);
+	void setVideoFormat(int id);
+	void setAudioFormat(int id);
 	void setRunTime(long runTime);
 	void setMainContent(std::string mainContent);
-	void setLanguage(Languages laguage);
+	void setLanguage(int id);
 	void setRetailPrice(float retailPrice);
 	void setSubtitles(bool subtitles);
 	void setFrameAspect(std::string frameAspect);
-	void setPackaging(Packaging packaging);
+	void setPackaging(int id);
 	//void setMaterialType(enum materialType); //Not sure how to do with this?
 private:
 	enum MaterialType 

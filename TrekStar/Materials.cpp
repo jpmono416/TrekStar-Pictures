@@ -21,13 +21,17 @@ void Materials::setTitle(std::string title)
 	this->title = title;
 }
 
-void Materials::setVideoFormat(VideoFormats videoFormat)
+void Materials::setVideoFormat(int id)
 {
+	VideoFormats videoFormat;
+	videoFormat.setID(id);
 	this->videoFormat = videoFormat;
 }
 
-void Materials::setAudioFormat(AudioFormats audioFormat)
+void Materials::setAudioFormat(int id)
 {
+	AudioFormats audioFormats;
+	audioFormat.setID(id);
 	this->audioFormat = audioFormat;
 }
 
@@ -41,9 +45,11 @@ void Materials::setMainContent(std::string mainContent)
 	this->mainContent = mainContent;
 }
 
-void Materials::setLanguage(Languages laguage)
+void Materials::setLanguage(int id)
 {
-	this->language = laguage;
+	Languages language;
+	language.setID(id);
+	this->language = language;
 }
 
 void Materials::setRetailPrice(float retailPrice)
@@ -61,7 +67,9 @@ void Materials::setFrameAspect(std::string frameAspect)
 	this->frameAspect = frameAspect;
 }
 
-void Materials::setPackaging(Packaging packaging)
+void Materials::setPackaging(int id)
 {
+	Packaging packaging;
+	packaging.setID(id);	
 	this->packaging = packaging;
 }

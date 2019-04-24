@@ -8,9 +8,10 @@ public:
 
 	void sortAsc();
 	void sortDesc();
-	void sortByIdAsc();
-	void sortByIdDesc();
+	void sortById(bool asc);
 
+	Stack getStack() { return this->stack; }
+	void setStack(Stack stack) { this->stack = stack; }
 private:
 	bool isBigger(int a, int b);
 	Stack stack;
