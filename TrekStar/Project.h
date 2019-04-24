@@ -5,6 +5,7 @@
 #include "Teams.h"
 #include "Genres.h"
 #include "Languages.h"
+#include "Materials.h"
 
 class Project
 {
@@ -14,6 +15,9 @@ public:
 	int* calcRunTime();
 	void release();
 	void stopPlaying();
+
+	int getId() { return this->id; }
+	void setId(int id) { this->id = id; }
 private:
 	int id;
 	std::string filmName;
@@ -24,6 +28,7 @@ private:
 	std::vector<Languages> languages;
 	int weeklyTicketSales;
 	long runTime;
-	std::vector<std::string> keywordss;
+	std::vector<std::string> keywords;
+	std::vector<Materials> materials;
 };
 

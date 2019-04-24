@@ -7,14 +7,14 @@ public:
 	Stack();
 	~Stack();
 	
-	void emptyStack();
-	Project getElem(int id);
+	std::vector<Project> emptyStack();
+	Project getElem();
 	bool addElem(Project elem);
 	Project pop();
 	
-	std::list<Project> getData() { return this->data; }
-	void setData(std::list<Project> data) { this->data = data; }
+	std::vector<Project> getData() { return this->data; }
+	void setData(std::vector<Project> data) { this->data = data; }
 private:
-	std::list<Project> data;
+	std::vector<Project> data;
 };
 
