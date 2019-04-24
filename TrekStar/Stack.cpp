@@ -44,4 +44,5 @@ Project Stack::getElem()
 bool Stack::addElem(Project elem)
 {
 	data.push_back(elem);
+	return true;
 }

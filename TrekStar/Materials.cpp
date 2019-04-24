@@ -73,3 +73,25 @@ void Materials::setPackaging(int id)
 	packaging.setID(id);	
 	this->packaging = packaging;
 }
+
+void Materials::setMaterialType(int id)
+{
+	switch (id) {
+	case 1:
+		this->materialType = SingleDVD;
+		break;
+	case 2:
+		this->materialType = DoubleDVD;
+		break;
+	case 3:
+		this->materialType = BluRay;
+		break;
+	case 4:
+		this->materialType = ComboBox;
+		break;
+	case 5:
+		this->materialType = VHS;
+		break;
+	}
+	this->materialType = SingleDVD;
+}
