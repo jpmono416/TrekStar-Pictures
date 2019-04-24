@@ -24,7 +24,7 @@ public:
 	void setSubtitles(bool subtitles);
 	void setFrameAspect(std::string frameAspect);
 	void setPackaging(int id);
-	void setMaterialType(int id);
+	//void setMaterialType(enum materialType); //Not sure how to do with this?
 private:
 	enum MaterialType 
 	{
