@@ -16,7 +16,7 @@ bool inline BubbleSort::isBigger(int a, int b)
 	return(a > b);
 }
 
-void BubbleSort::sortById(bool asc)
+/*void BubbleSort::sortById(bool asc)
 {
 	bool newIteration = true;
 	const int dataSize = this->stack.getData().size();
@@ -46,4 +46,4 @@ void BubbleSort::sortById(bool asc)
 			}
 		}
 	}
-}
+}*/
