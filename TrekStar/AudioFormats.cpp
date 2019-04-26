@@ -16,7 +16,7 @@ void AudioFormats::setID(int id)
 	this->id = id;
 }
 
-std::string AudioFormats::getAudioFormat(int id)
+std::string AudioFormats::getAudioFormat()
 {
-	return this->items.at(id -1);
+	return this->items.at(id);
 }

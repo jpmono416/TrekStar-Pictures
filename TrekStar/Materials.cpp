@@ -24,14 +24,14 @@ void Materials::setTitle(std::string title)
 void Materials::setVideoFormat(int id)
 {
 	VideoFormats videoFormat;
-	videoFormat.setID(id);
+	videoFormat.setID(id-1);
 	this->videoFormat = videoFormat;
 }
 
 void Materials::setAudioFormat(int id)
 {
 	AudioFormats audioFormats;
-	audioFormat.setID(id);
+	audioFormat.setID(id-1);
 	this->audioFormat = audioFormat;
 }
 
@@ -48,7 +48,7 @@ void Materials::setMainContent(std::string mainContent)
 void Materials::setLanguage(int id)
 {
 	Languages language;
-	language.setID(id);
+	language.setID(id-1);
 	this->language = language;
 }
 
@@ -70,13 +70,13 @@ void Materials::setFrameAspect(std::string frameAspect)
 void Materials::setPackaging(int id)
 {
 	Packaging packaging;
-	packaging.setID(id);	
+	packaging.setID(id-1);	
 	this->packaging = packaging;
 }
 
 void Materials::setMaterialType(int id)
 {
-	switch (id) {
+	switch (id-1) {
 	case 1:
 		this->materialType = SingleDVD;
 		break;
@@ -93,5 +93,5 @@ void Materials::setMaterialType(int id)
 		this->materialType = VHS;
 		break;
 	}
-	this->materialType = SingleDVD;
+	//this->materialType = SingleDVD; ?
 }

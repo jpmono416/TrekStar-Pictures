@@ -16,9 +16,9 @@ void VideoFormats::setID(int id)
 	this->id = id;
 }
 
-std::string VideoFormats::getVideoFormat(int id)
+std::string VideoFormats::getVideoFormat()
 {
-	return this->items.at(id - 1);
+	return this->items.at(id);
 }
 
 
