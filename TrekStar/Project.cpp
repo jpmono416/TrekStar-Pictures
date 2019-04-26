@@ -261,6 +261,7 @@ std::string ticketSalesToString(int ticketSales)
 void newProject()
 {
 	Project newProject;
+	Stack stack;
 	std::string projectID, title, summary, releaseDate, genre, languages, locations, runtime, keywords, filmStatus, ticketSales;
 	bool format = false, addMore = true;
 	int  ID = NULL,genreID = NULL, languageID = NULL, locationID = NULL, runtimeID = NULL, filmStatusID = NULL, ticketSalesInt = NULL;
@@ -583,5 +584,8 @@ void newProject()
 
 
 	std::cout << "Project " + projectID + " Created!\n\n";
-	//stack.addElem();
+	stack.addElem(newProject);
+	//test adding 2 to stack
+	Project duplicateProj = newProject;
+	stack.addElem(duplicateProj);
 }

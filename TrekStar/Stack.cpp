@@ -17,7 +17,8 @@ Project* Stack::emptyStack()
 	Project stackData[arraySize];
 	int arrayCounter = 0;
 	// Iterate backwards through the vector
-	while ((sizeof(data) / sizeof(Project)) >= 0)
+	int size = (sizeof(data) / sizeof(Project));
+	while (size >= 0 & arrayCounter <= 19)
 	{
 		stackData[arrayCounter] = (this->pop());
 		++arrayCounter;
@@ -48,7 +49,12 @@ bool Stack::addElem(Project elem)
 {
 	if (getAmountOfElements() < getArraySize())
 	{
-		data[getAmountOfElements() - 1] = elem;
+		data[getAmountOfElements()] = elem;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 
 	addToAmount();
