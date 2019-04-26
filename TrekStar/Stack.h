@@ -15,6 +15,7 @@ public:
 	int getAmountOfElements() { return this->amountOfElements; }
 	void addToAmount() { ++amountOfElements;  }
 	void removeFromAmount() { --amountOfElements; }
+	Project* getData() { return this->data; }
 
 private:
 

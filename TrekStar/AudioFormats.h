@@ -7,7 +7,7 @@ public:
 	AudioFormats();
 	~AudioFormats();
 	void setID(int id);
-	std::string getAudioFormat(int id);
+	std::string getAudioFormat();
 
 private:
 	int id;

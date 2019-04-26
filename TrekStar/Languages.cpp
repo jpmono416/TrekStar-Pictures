@@ -16,8 +16,8 @@ void Languages::setID(int id)
 	this->id = id;
 }
 
-std::string Languages::getLanguage(int id)
+std::string Languages::getLanguage()
 {
 
-	return this->items.at(id);
+	return this->languageList.at(id);
 }
