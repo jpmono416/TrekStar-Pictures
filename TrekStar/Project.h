@@ -11,39 +11,49 @@ class Project
 {
 private:
 	int projectID;
-	std::string filmName;
+	std::string filmTitle;
 	std::string summary;
-	std::string releaseDate; //TODO CHANGE SETTER
+	tm releaseDate;
 	Genres genre;
 	std::vector<Locations> locations;
 	std::vector<Languages> languages;
 	int filmStatusID;
-	float weeklyTicketSales;
-	long runTime;
+	int weeklyTicketSales;
+	int runTime;
 	std::vector<std::string> keywords;
 	std::vector<Materials> materials;
 public:
 	Project();
 	~Project();
-	int* calcRunTime();
-	void release();
-	void stopPlaying();
-	void setProjectID(int ID);
-	int getProjectId() { return this->projectID; }
+	//int* calcRunTime();
+	//void release();
+	//void stopPlaying();
+
+	//Setting functions
+	void setProjectID(int projectID);
 	void setTitle(std::string userFilmTitle);
-	std::string getTitle() { return this->filmName; }
 	void setSummary(std::string userFilmSummary);
-	std::string getSummary() { return this->summary; }
 	void setReleaseDate(std::string userReleaseDate);
-	std::string getReleaseDate() { return this->releaseDate; }
-	void setGenre(std::string userGenre);
-	void setLanguages(std::string userLanguages);
-	void setLocations(std::string userLocations);
-	void setRuntime(std::string runTime);
+	void setGenre(int genreID);
+	void setLanguages(int languageID);
+	void setLocations(int locationID);
+	void setRuntime(int runTime);
 	void setKeywords(std::string userKeywords);
-	void setFilmStatus(std::string userFilmStatus);
-	void setTicketSales(std::string userTicketSales);
-	void setMaterials(int ID, Materials material);
-	//1
+	void setFilmStatus(int filmStatusID);
+	void setTicketSales(int userTicketSales);
+	void setMaterials(Materials material);
+	//Getting functions
+	int getProjectID();
+	std::string getTitle();
+	std::string getSummary();
+	tm getReleaseDate();
+	Genres getGenre();
+	std::vector<Locations> getLocations();
+	std::vector<Languages> getLanguages();
+	int getRuntime();
+	std::vector<std::string> getKeywords();
+	int getFilmStatus();
+	int getTicketSales();
+	std::vector <std::string> filmStatusList = { "Unreleased", "Now Playing", "Released" };
 };
 
