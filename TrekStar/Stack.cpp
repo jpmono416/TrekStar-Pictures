@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Stack.h"
 
-
 Stack::Stack()
 {
 }
@@ -12,15 +11,16 @@ Stack::~Stack()
 	this->emptyStack();
 }
 
-std::vector<Project> Stack::emptyStack()
+// Return the data in  the order which the stack will process
+Project* Stack::emptyStack()
 {
-	// Return the data in  the order which the stack will process
-	std::vector<Project> stackData;
-	
+	Project stackData[arraySize];
+	int arrayCounter = 0;
 	// Iterate backwards through the vector
-	while(data.size() >= 0)
+	while ((sizeof(data) / sizeof(Project)) >= 0)
 	{
-		stackData.push_back(this->pop());
+		stackData[arrayCounter] = (this->pop());
+		++arrayCounter;
 	}
 
 	return stackData;
@@ -30,18 +30,26 @@ std::vector<Project> Stack::emptyStack()
 // Remove the last element of the stack and return it
 Project Stack::pop()
 {
-	auto project = data.back();
-	data.pop_back();
+	Project * tempArray[] { new Project[(sizeof(data) / sizeof(Project)) - 1] };
+	Project rtnProj = getElem();
 	
-	return project;
+	memcpy(data, tempArray, sizeof(tempArray));
+	removeFromAmount();
+	return rtnProj;
 }
+
 
 Project Stack::getElem()
 {
-	return data.back();
+	return data[(sizeof(data) / sizeof(Project)) - 1];
 }
 
 bool Stack::addElem(Project elem)
 {
-	data.push_back(elem);
+	if (getAmountOfElements() < getArraySize())
+	{
+		data[getAmountOfElements() - 1] = elem;
+	}
+
+	addToAmount();
 }
