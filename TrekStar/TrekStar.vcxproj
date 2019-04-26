@@ -157,7 +157,6 @@
     <ClInclude Include="Employee.h" />
     <ClInclude Include="FileHandler.h" />
     <ClInclude Include="Genres.h" />
-    <ClInclude Include="JsonManipulator.h" />
     <ClInclude Include="Languages.h" />
     <ClInclude Include="Locations.h" />
     <ClInclude Include="Materials.h" />
@@ -177,7 +176,6 @@
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="Genres.cpp" />
-    <ClCompile Include="JsonManipulator.cpp" />
     <ClCompile Include="Languages.cpp" />
     <ClCompile Include="Locations.cpp" />
     <ClCompile Include="Materials.cpp" />
