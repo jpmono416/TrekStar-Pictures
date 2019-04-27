@@ -10,6 +10,7 @@ public:
 	Project getElem();
 	bool addElem(Project elem);
 	Project pop();
+	Project search(int z);
 	
 	int getArraySize() { return this->arraySize;  }
 	int getAmountOfElements() { return this->amountOfElements; }
