@@ -14,6 +14,7 @@ public:
 
 	//virtual int* calcRunTime() = 0;
 	void setid(int id);
+	int getID() { return this->id; }
 	void setTitle(std::string title);
 	void setVideoFormat(int id);
 	void setAudioFormat(int id);
@@ -25,6 +26,7 @@ public:
 	void setFrameAspect(std::string frameAspect);
 	void setPackaging(int id);
 	void setMaterialType(int id);
+	friend std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Materials& mat);
 private:
 	enum MaterialType 
 	{

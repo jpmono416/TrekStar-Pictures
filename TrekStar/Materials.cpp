@@ -95,3 +95,9 @@ void Materials::setMaterialType(int id)
 	}
 	//this->materialType = SingleDVD; ?
 }
+
+std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Materials& mat)
+{
+	os << mat.getID();
+	return os;
+}

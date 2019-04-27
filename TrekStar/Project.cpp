@@ -64,6 +64,15 @@ void Project::setReleaseDate(std::string releaseDate)
 	this->releaseDate = userReleaseDate;
 }
 
+std::string Project::getReleaseDateAsString()
+{
+	int const bufferSize = 11;
+	char dateStr[bufferSize];
+	strftime(dateStr, bufferSize, "%d/%m/%Y", &this->getReleaseDate());
+	return dateStr;
+}
+
+
 tm Project::getReleaseDate()
 {
 	return this->releaseDate;
@@ -589,3 +598,47 @@ void newProject()
 	Project duplicateProj = newProject;
 	stack.addElem(duplicateProj);
 }
+
+/* Override of the << operator that manipulates the underlying 
+*  classes, which have an override too, to return it to the 
+*  file manipulator class
+*/
+std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Project& pro)
+{
+
+	std::string listBeginning = "\"[";
+	std::string listEndings = "]\",";
+	os << pro.getProjectID()
+		<< pro.getTitle()
+		<< pro.getSummary()
+		<< pro.getReleaseDateAsString()
+		<< pro.getGenre()
+		<< pro.getRuntime()
+		<< pro.getFilmStatus()
+		<< pro.getTicketSales();
+
+	// Iterate through the lists of elements to get and format IDS
+	// onto the CSV
+	os << listBeginning;
+	for (auto location : pro.getLocations())
+	{
+		os << "," << location;
+	}
+	
+	os << listEndings << listBeginning;
+	
+	for (auto language : pro.getLanguages())
+	{
+		os << "," << language;
+	}
+	os << listEndings << listBeginning;
+
+	for (auto keyword : pro.getKeywords())
+	{
+		os << keyword;
+	}
+	os << listEndings;
+
+	return os;
+}
+

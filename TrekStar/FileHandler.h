@@ -12,14 +12,11 @@ public:
 	~FileHandler();
 
 	bool updateTeamRoles(std::vector<TeamRoles> tr);
-	bool updateProjects(Project proj[]);
-	bool saveAllChanges(Stack projects, std::vector<TeamRoles> teamRoles)
-	{
-		updateTeamRoles(teamRoles);
-		updateProjects(projects.getData());
-	}
+	bool saveAllChanges(Stack projects);
 
 	std::string getFileContent() { return this->fileContent; }
+
+
 private:
 	std::string fileContent;
 	const std::string separator = ",";

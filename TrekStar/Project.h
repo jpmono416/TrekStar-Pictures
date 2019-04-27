@@ -42,11 +42,13 @@ public:
 	void setFilmStatus(int filmStatusID);
 	void setTicketSales(int userTicketSales);
 	void setMaterials(Materials material);
+	
 	//Getting functions
 	int getProjectID();
 	std::string getTitle();
 	std::string getSummary();
 	tm getReleaseDate();
+	std::string getReleaseDateAsString();
 	Genres getGenre();
 	std::vector<Locations> getLocations();
 	std::vector<Languages> getLanguages();
@@ -55,5 +57,6 @@ public:
 	int getFilmStatus();
 	int getTicketSales();
 	std::vector <std::string> filmStatusList = { "Unreleased", "Now Playing", "Released" };
+	friend std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Project& pro);
 };
 
