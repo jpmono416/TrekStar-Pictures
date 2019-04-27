@@ -50,12 +50,8 @@ bool Stack::addElem(Project elem)
 	if (getAmountOfElements() < getArraySize())
 	{
 		data[getAmountOfElements()] = elem;
+		addToAmount();
 		return true;
 	}
-	else
-	{
-		return false;
-	}
-
-	addToAmount();
+	return false;
 }
