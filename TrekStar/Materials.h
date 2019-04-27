@@ -15,6 +15,7 @@ public:
 	//virtual int* calcRunTime() = 0;
 	void setid(int id);
 	int getID() { return this->id; }
+	void setProjectID(int id);
 	void setTitle(std::string title);
 	void setVideoFormat(int id);
 	void setAudioFormat(int id);
@@ -49,5 +50,6 @@ private:
 	std::string frameAspect;
 	Packaging packaging;
 	MaterialType materialType;
+	int projectID;
 };
 
