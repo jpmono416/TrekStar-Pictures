@@ -6,8 +6,8 @@
 #include <string>
 #include <regex>
 #include <algorithm>
-#include <ctype.h>
-#include <time.h>
+#include <cctype>
+#include <ctime>
 
 
 Project::Project()
