@@ -14,6 +14,8 @@ FileHandler::~FileHandler()
 bool FileHandler::saveAllChanges(Stack proj)
 {
 	std::ofstream materialsStream;
+	projectsStream.open("projects.csv");
+	materialsStream.open("materials.csv");
 
 	Project* projects{ proj.getData() };
 	const size_t arrayLength = sizeof(projects) / sizeof(*projects);
@@ -30,8 +32,9 @@ bool FileHandler::saveAllChanges(Stack proj)
 	}
 	return true;
 
-	projectsStream.open("projects.csv");
-	materialsStream.open("materials.csv");
+	projectsStream.close();
+	materialsStream.close();
+	
 }
 
 Stack FileHandler::importData()
@@ -146,4 +149,12 @@ std::vector<std::string> FileHandler::splitStrings(std::string text, char delim)
 	std::vector<std::string> elements;
 	this->split(text, delim, std::back_inserter(elements));
 	return elements;
+}
+
+void FileHandler::removeCharsFromString(std::string& str, char* charsToRemove) 
+{
+	for (unsigned int i = 0; i < strlen(charsToRemove); ++i) 
+	{
+		str.erase(remove(str.begin(), str.end(), charsToRemove[i]), str.end());
+	}
 }
