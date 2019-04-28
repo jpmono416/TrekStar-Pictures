@@ -278,33 +278,41 @@ std::string ticketSalesToString(int ticketSales)
 	return std::to_string(ticketSales);
 }
 
+bool Project::is_number(const std::string& s) {
+	return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
+}
+
+int Project::askForId()
+{
+	int pId;
+	std::cout << "Enter Project ID: ";
+	std::cin >> pId;
+	
+
+	while (std::cin.fail())
+	{
+		std::cout << std::endl << "Please enter a number:";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin >> pId;
+	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	return pId;
+}
 //Project Creation function
 Project Project::newProject()
 {
 	Project newProject;
+	
 	Stack stack;
-	std::string projectID, title, summary, releaseDate, genre, languages, locations, runtime, keywords, filmStatus, ticketSales;
+	std::string title, summary, releaseDate, genre, languages, locations, runtime, keywords, filmStatus, ticketSales;
 	bool format = false, addMore = true;
 	int  ID = NULL,genreID = NULL, languageID = NULL, locationID = NULL, runtimeID = NULL, filmStatusID = NULL, ticketSalesInt = NULL;
 	clearScreen();
-	//ID Input
-	while (format == false)
-	{
-		std::cout << "Enter Project ID: ";
-		std::cin >> projectID;
-		bool has_only_digits = (projectID.find_first_not_of("0123456789") == std::string::npos);
-		if (has_only_digits == true)
-		{
-			ID = std::stoi(projectID);
-			format = true;
-		}
-		else
-		{
-			std::cout << "Please enter numbers only!\n";
-		}
 
-	}
-	newProject.setProjectID(ID);
+	const int projectId = this->askForId();
+
+	newProject.setProjectID(projectId);
 	std::cin.ignore(); //clears cin to avoid duplicate cout
 	format = false;
 	clearScreen();
@@ -593,7 +601,7 @@ Project Project::newProject()
 	//Print out project details
 	std::cout << newProject;
 
-	std::cout << "Project " + projectID + " Created!\n\n";
+	std::cout << "Project " << projectID << " Created!\n\n";
 	return newProject;
 }
 
@@ -638,6 +646,7 @@ std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<
 	{
 		os << smColon << keyword;
 	}
+
 	os << listEndings << listBeginning;
 
 	for (auto material : pro.getMaterials())
@@ -647,6 +656,8 @@ std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<
 	
 	os << listEndings;
 	
+
+
 	return os;
 }
 

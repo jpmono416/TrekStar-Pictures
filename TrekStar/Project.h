@@ -22,6 +22,9 @@ private:
 	int runTime;
 	std::vector<std::string> keywords;
 	std::vector<Materials> materials;
+	int askForId();
+	// Private functions
+	bool is_number(const std::string& s);
 public:
 	Project();
 	~Project();
