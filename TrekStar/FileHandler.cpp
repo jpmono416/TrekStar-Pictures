@@ -144,6 +144,11 @@ void FileHandler::split(const std::string &s, char delim, Out result)
 std::vector<std::string> FileHandler::splitStrings(std::string text, char delim)
 {
 	std::vector<std::string> elements;
+	if (text.find("[]") != std::string::npos)
+	{
+		text.erase(std::remove(text.begin(), text.end(), '['), text.end());
+		text.erase(std::remove(text.begin(), text.end(), ']'), text.end());
+	}
 	this->split(text, delim, std::back_inserter(elements));
 	return elements;
 }

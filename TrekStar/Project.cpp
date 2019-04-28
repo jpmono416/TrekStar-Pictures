@@ -279,7 +279,7 @@ std::string ticketSalesToString(int ticketSales)
 }
 
 //Project Creation function
-void newProject()
+Project Project::newProject()
 {
 	Project newProject;
 	Stack stack;
@@ -592,22 +592,9 @@ void newProject()
 	clearScreen();
 	//Print out project details
 	std::cout << newProject;
-	/*
-	std::cout << "Project ID: " << std::to_string(newProject.getProjectID()) << std::endl;
-	std::cout << "Project Title: " << newProject.getTitle() << std::endl;
-	std::cout << "Project Summary: " << newProject.getSummary() << std::endl;
-	std::cout << "Project Release Date: " << releaseDateToString(newProject.getReleaseDate()) << std::endl;
-	std::cout << "Project Genre: " << genreToString(newProject.getGenre()) << std::endl;
-	std::cout << "Project languages: " << languagesToString(newProject.getLanguages()) << std::endl;
-	std::cout << "Project locations: " << locationsToString(newProject.getLocations()) << std::endl;
-	std::cout << "Project Runtime: " << runtimeToString(newProject.getRuntime()) << " minutes" << std::endl;
-	std::cout << "Project Keywords: " << keywordsToString(newProject.getKeywords()) << std::endl;
-	std::cout << "Project Status: " << filmStatusToString(newProject.getFilmStatus()) << std::endl;
-	std::cout << "Project Weekly Ticket Sales: " << ticketSalesToString(newProject.getTicketSales()) << std::endl;
-	*/
 
 	std::cout << "Project " + projectID + " Created!\n\n";
-	stack.addElem(newProject);
+	return newProject;
 }
 
 /* 

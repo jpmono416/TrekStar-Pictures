@@ -28,7 +28,7 @@ public:
 	//int* calcRunTime();
 	//void release();
 	//void stopPlaying();
-
+	Project newProject();
 	//Setting functions
 	void setProjectID(int projectID);
 	void setTitle(std::string userFilmTitle);
