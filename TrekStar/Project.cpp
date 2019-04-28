@@ -288,7 +288,6 @@ int Project::askForId()
 	std::cout << "Enter Project ID: ";
 	std::cin >> pId;
 	
-
 	while (std::cin.fail())
 	{
 		std::cout << std::endl << "Please enter a number:";
@@ -313,7 +312,7 @@ Project Project::newProject()
 	const int projectId = this->askForId();
 
 	newProject.setProjectID(projectId);
-	std::cin.ignore(); //clears cin to avoid duplicate cout
+	
 	format = false;
 	clearScreen();
 
@@ -599,7 +598,7 @@ Project Project::newProject()
 	}
 	clearScreen();
 
-	std::cout << "Project " << projectID << " Created!\n\n";
+	std::cout << "Project " << projectId << " Created!\n\n";
 	return newProject;
 }
 
@@ -627,35 +626,75 @@ std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<
 	// onto the CSV
 	os << listBeginning;
 
+	unsigned int counter = 0;
+
 	for (auto location : pro.getLocations())
 	{
-		os << smColon << location;
+		switch (counter)
+		{
+			case 0 :
+				break;
+			default :
+				os << smColon;
+				break;
+		}
+		os << location;
+		++counter;
 	}
-	
+
+	counter = 0;
 	os << listEndings << listBeginning;
 	
 	for (auto language : pro.getLanguages())
 	{
-		os << smColon << language;
+		switch (counter)
+		{
+		case 0:
+			break;
+		default:
+			os << smColon;
+			break;
+		}
+		os << language;
+		++counter;
 	}
+
+	counter = 0;
 	os << listEndings << listBeginning;
 
 	for (auto keyword : pro.getKeywords())
 	{
-		os << smColon << keyword;
+		switch (counter)
+		{
+		case 0:
+			break;
+		default:
+			os << smColon;
+			break;
+		}
+		os << keyword;
+		++counter;
 	}
 
+	counter = 0;
 	os << listEndings << listBeginning;
 
 	for (auto material : pro.getMaterials())
 	{
+		switch (counter)
+		{
+		case 0:
+			break;
+		default:
+			os << smColon;
+			break;
+		}
 		os << material.getID();
+		++counter;
 	}
-	
+
 	os << listEndings;
 	
-
-
 	return os;
 }
 
