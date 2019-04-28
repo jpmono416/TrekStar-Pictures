@@ -41,7 +41,8 @@ Stack FileHandler::importData()
 {
 	std::ifstream file("materials.csv");
 	std::string line;
-	
+	Stack stack = Stack();
+
 	while(std::getline(file, line))
 	{
 		Materials mat = parseMaterialCSV(line);
@@ -58,6 +59,8 @@ Stack FileHandler::importData()
 		const Project&& pro = parseProjectCSV(line);
 		projects[counter] = pro;
 
+
+		stack.addToAmount(); // Ive just added this line to show the stuff
 		auto itPair = materialsMap.equal_range(pro.getProjectID());
 
 		for (auto count = itPair.first; count != itPair.second; ++count)
@@ -68,7 +71,7 @@ Stack FileHandler::importData()
 
 	
 
-	Stack stack = Stack();
+	
 	stack.setData(projects);
 	return stack;
 }
