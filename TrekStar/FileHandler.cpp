@@ -2,6 +2,7 @@
 #include "FileHandler.h"
 #include <sstream>
 #include <array>
+#include <iostream>
 FileHandler::FileHandler()
 {
 }
@@ -41,6 +42,7 @@ Stack FileHandler::importData()
 {
 	std::ifstream file("materials.csv");
 	std::string line;
+	Stack stack = Stack();
 	
 	while(std::getline(file, line))
 	{
@@ -57,7 +59,7 @@ Stack FileHandler::importData()
 	{
 		const Project&& pro = parseProjectCSV(line);
 		projects[counter] = pro;
-
+		stack.addToAmount();
 		auto itPair = materialsMap.equal_range(pro.getProjectID());
 
 		for (auto count = itPair.first; count != itPair.second; ++count)
@@ -68,7 +70,6 @@ Stack FileHandler::importData()
 
 	
 
-	Stack stack = Stack();
 	stack.setData(projects);
 	return stack;
 }
@@ -127,7 +128,7 @@ Project FileHandler::parseProjectCSV(std::string text)
 	{
 		proj.setKeywords(keyword);
 	}
-	return Project();
+	return proj;
 }
 
 /*
