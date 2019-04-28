@@ -2,7 +2,6 @@
 #include "FileHandler.h"
 #include <sstream>
 #include <array>
-#include <iostream>
 FileHandler::FileHandler()
 {
 }
@@ -15,8 +14,6 @@ FileHandler::~FileHandler()
 bool FileHandler::saveAllChanges(Stack proj)
 {
 	std::ofstream materialsStream;
-	projectsStream.open("projects.csv");
-	materialsStream.open("materials.csv");
 
 	Project* projects{ proj.getData() };
 	const size_t arrayLength = sizeof(projects) / sizeof(*projects);
@@ -33,16 +30,14 @@ bool FileHandler::saveAllChanges(Stack proj)
 	}
 	return true;
 
-	projectsStream.close();
-	materialsStream.close();
-	
+	projectsStream.open("projects.csv");
+	materialsStream.open("materials.csv");
 }
 
 Stack FileHandler::importData()
 {
 	std::ifstream file("materials.csv");
 	std::string line;
-	Stack stack = Stack();
 	
 	while(std::getline(file, line))
 	{
@@ -59,7 +54,7 @@ Stack FileHandler::importData()
 	{
 		const Project&& pro = parseProjectCSV(line);
 		projects[counter] = pro;
-		stack.addToAmount();
+
 		auto itPair = materialsMap.equal_range(pro.getProjectID());
 
 		for (auto count = itPair.first; count != itPair.second; ++count)
@@ -70,6 +65,7 @@ Stack FileHandler::importData()
 
 	
 
+	Stack stack = Stack();
 	stack.setData(projects);
 	return stack;
 }
@@ -128,7 +124,7 @@ Project FileHandler::parseProjectCSV(std::string text)
 	{
 		proj.setKeywords(keyword);
 	}
-	return proj;
+	return Project();
 }
 
 /*
@@ -155,12 +151,4 @@ std::vector<std::string> FileHandler::splitStrings(std::string text, char delim)
 	}
 	this->split(text, delim, std::back_inserter(elements));
 	return elements;
-}
-
-void FileHandler::removeCharsFromString(std::string& str, char* charsToRemove) 
-{
-	for (unsigned int i = 0; i < strlen(charsToRemove); ++i) 
-	{
-		str.erase(remove(str.begin(), str.end(), charsToRemove[i]), str.end());
-	}
 }

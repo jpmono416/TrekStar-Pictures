@@ -20,7 +20,7 @@ public:
 
 	template<typename Out>
 	void split(const std::string &s, char delim, Out result);
-	void removeCharsFromString(std::string& str, char* charsToRemove);
+
 private:
 	std::string fileContent;
 	const std::string separator = ",";
