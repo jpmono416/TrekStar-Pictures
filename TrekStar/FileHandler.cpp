@@ -19,23 +19,23 @@ bool FileHandler::saveAllChanges(Stack proj)
 	materialsStream.open("materials.csv");
 
 	Project* projects{ proj.getData() };
-	const size_t arrayLength = sizeof(projects) / sizeof(*projects);
-	this->projectsStream.open("projects.csv");
 
-	for(unsigned int counter = 0; counter < arrayLength; ++counter)
+	for(unsigned int counter = 0; counter < proj.getAmountOfElements(); ++counter)
 	{
 		Project pr = projects[counter];
 		this->projectsStream << pr << std::endl;
+		std::string content;
+		std::cout << "written to stream: " << pr << "end";
 		for (auto material : pr.getMaterials())
 		{
 			materialsStream << material << std::endl;
 		}
 	}
-	return true;
-
+	projectsStream.flush();
 	projectsStream.close();
+	materialsStream.flush();
 	materialsStream.close();
-	
+	return true;
 }
 
 Stack FileHandler::importData()
