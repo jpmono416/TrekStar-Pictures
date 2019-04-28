@@ -126,7 +126,7 @@ void Materials::setPackaging(int id)
 
 int Materials::getPackaging()
 {
-	return this->packaging.getID;
+	return this->packaging.getID();
 }
 
 void Materials::setMaterialType(int id)
@@ -158,7 +158,8 @@ int Materials::getMaterialType()
 std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Materials& mat)
 {
 	const char* comma = ",";
-	os << mat.getID() << comma
+	os <<mat.getProjectID() << comma 
+		<< mat.getID() << comma
 		<< mat.getTitle() << comma
 		<< mat.getVideoFormat() << comma
 		<< mat.getVideoFormat() << comma

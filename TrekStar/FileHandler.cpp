@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "FileHandler.h"
-
+#include <sstream>
+#include <array>
 FileHandler::FileHandler()
 {
 }
@@ -22,7 +23,10 @@ bool FileHandler::saveAllChanges(Stack proj)
 	{
 		Project pr = projects[counter];
 		this->projectsStream << pr << std::endl;
-		materialsStream << pr.getMaterials << std::endl;
+		for (auto material : pr.getMaterials())
+		{
+			materialsStream << material << std::endl;
+		}
 	}
 	return true;
 
@@ -37,7 +41,8 @@ Stack FileHandler::importData()
 	
 	while(std::getline(file, line))
 	{
-		 materials.emplace_back(parseMaterialCSV(line));
+		Materials mat = parseMaterialCSV(line);
+		materialsMap.emplace(mat.getProjectID(), mat);
 	}
 	
 	const int arraySize = 20;
@@ -47,12 +52,22 @@ Stack FileHandler::importData()
 	file.open("projects.csv");
 	for (unsigned int counter = 0; std::getline(file, line); ++counter)
 	{
-		projects[counter] = parseProjectCSV(line).setMaterials(materials.at(counter);
+		const Project&& pro = parseProjectCSV(line);
+		projects[counter] = pro;
+
+		auto itPair = materialsMap.equal_range(pro.getProjectID());
+
+		for (auto count = itPair.first; count != itPair.second; ++count)
+		{
+			projects[counter].addMaterial(count->second);
+		}
 	}
 
-	Stack stack = Stack();
-
 	
+
+	Stack stack = Stack();
+	stack.setData(projects);
+	return stack;
 }
 
 Materials FileHandler::parseMaterialCSV(std::string text)
@@ -62,18 +77,19 @@ Materials FileHandler::parseMaterialCSV(std::string text)
 
 	// Could create custom constructor to receive
 	// vector of strings and do this automatically
-	tempMat.setid(stoi(atts.at(0)));
-	tempMat.setTitle(atts.at(1));
-	tempMat.setVideoFormat(stoi(atts.at(2)));
-	tempMat.setAudioFormat(stoi(atts.at(3)));
-	tempMat.setRunTime(strtol(atts.at(4).c_str(),nullptr,0));
-	tempMat.setMainContent(atts.at(5));
-	tempMat.setLanguage(stoi(atts.at(6)));
-	tempMat.setRetailPrice(stof(atts.at(7)));
-	tempMat.setSubtitles(stoi(atts.at(8)));
-	tempMat.setFrameAspect(atts.at(9));
-	tempMat.setPackaging(stoi(atts.at(10)));
-	tempMat.setMaterialType(stoi(atts.at(11)));
+	tempMat.setProjectID(stoi(atts.at(0)));
+	tempMat.setid(stoi(atts.at(1)));
+	tempMat.setTitle(atts.at(2));
+	tempMat.setVideoFormat(stoi(atts.at(3)));
+	tempMat.setAudioFormat(stoi(atts.at(4)));
+	tempMat.setRunTime(strtol(atts.at(5).c_str(),nullptr,0));
+	tempMat.setMainContent(atts.at(6));
+	tempMat.setLanguage(stoi(atts.at(7)));
+	tempMat.setRetailPrice(stof(atts.at(8)));
+	tempMat.setSubtitles(stoi(atts.at(9)));
+	tempMat.setFrameAspect(atts.at(10));
+	tempMat.setPackaging(stoi(atts.at(11)));
+	tempMat.setMaterialType(stoi(atts.at(12)));
 
 	return Materials();
 }
@@ -108,8 +124,6 @@ Project FileHandler::parseProjectCSV(std::string text)
 	{
 		proj.setKeywords(keyword);
 	}
-
-	proj.setMaterials(this->materials);
 	return Project();
 }
 

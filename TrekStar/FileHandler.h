@@ -3,6 +3,7 @@
 #include "Project.h"
 #include "Stack.h"
 #include <fstream>
+#include <unordered_map>
 
 class FileHandler
 {
@@ -24,6 +25,7 @@ private:
 	std::string fileContent;
 	const std::string separator = ",";
 	std::ofstream projectsStream;
-	std::vector<Materials> materials;
+	//std::vector<Materials> materials;
+	std::unordered_multimap<int,Materials> materialsMap;
 };
 

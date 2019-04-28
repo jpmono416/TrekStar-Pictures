@@ -18,7 +18,7 @@ Project* Stack::emptyStack()
 	int arrayCounter = 0;
 	// Iterate backwards through the vector
 	int size = (sizeof(data) / sizeof(Project));
-	while (size >= 0 & arrayCounter <= 19)
+	while (size >= 0 && arrayCounter <= 19)
 	{
 		stackData[arrayCounter] = (this->pop());
 		++arrayCounter;
@@ -39,10 +39,14 @@ Project Stack::pop()
 	return rtnProj;
 }
 
-void Stack::setData(Project projects[])
+void Stack::setData(Project projects[arraySize])
 {
-	std::copy(std::begin(projects), std::end(projects), std::begin(this->data));
+	for (unsigned int i = 0; i < arraySize; ++i)
+	{
+		this->data[i] = projects[i];
+	}
 }
+
 
 
 Project Stack::getElem()
@@ -59,8 +63,4 @@ bool Stack::addElem(Project elem)
 		return true;
 	}
 	return false;
-}
-
-Project Stack::search(int z) {
-
 }

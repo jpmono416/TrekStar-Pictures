@@ -16,6 +16,7 @@ public:
 	void setid(int id);
 	int getID() { return this->id; }
 	void setProjectID(int id);
+	int getProjectID() { return this->projectID; }
 	void setTitle(std::string title);
 	std::string getTitle();
 	void setVideoFormat(int id);

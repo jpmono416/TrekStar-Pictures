@@ -10,7 +10,6 @@ public:
 	void setID(int id);
 	int getID() { return this->id; }
 	std::string getLanguage();
-	std::ostream& operator<<(std::ostream&);
 	friend std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Languages& language);
 private:
 	int id;

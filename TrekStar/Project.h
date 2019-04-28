@@ -42,9 +42,9 @@ public:
 	void setFilmStatus(int filmStatusID);
 	void setTicketSales(int userTicketSales);
 	void setMaterials(std::vector<Materials> material);
-	
+	void addMaterial(Materials mat);
 	//Getting functions
-	int getProjectID();
+	int getProjectID() const; 
 	std::string getTitle();
 	std::string getSummary();
 	tm getReleaseDate();

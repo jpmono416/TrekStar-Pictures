@@ -24,7 +24,7 @@ void Project::setProjectID(int ID)
 	this->projectID = ID;
 }
 
-int Project::getProjectID()
+int Project::getProjectID() const
 {
 	return this->projectID;
 }
@@ -162,6 +162,11 @@ std::vector<Materials> Project::getMaterials()
 void Project::setMaterials(std::vector<Materials> material)
 {
 	this->materials = materials;
+}
+
+void Project::addMaterial(Materials mat)
+{
+	this->materials.emplace_back(mat);
 }
 
 //Validation function
