@@ -16,6 +16,11 @@ void Packaging::setID(int id)
 	this->id = id;
 }
 
+int Packaging::getID()
+{
+	return this->id;
+}
+
 std::string Packaging::getPackaging()
 {
 	return this->items.at(id);

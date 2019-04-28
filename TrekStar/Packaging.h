@@ -7,6 +7,7 @@ public:
 	Packaging();
 	~Packaging();
 	void setID(int id);
+	int getID();
 	std::string getPackaging();
 private:
 	int id;

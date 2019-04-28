@@ -7,6 +7,7 @@ public:
 	VideoFormats();
 	~VideoFormats();
 	void setID(int id);
+	int getID();
 	std::string getVideoFormat();
 private:
 	int id;

@@ -39,6 +39,11 @@ Project Stack::pop()
 	return rtnProj;
 }
 
+void Stack::setData(Project projects[])
+{
+	std::copy(std::begin(projects), std::end(projects), std::begin(this->data));
+}
+
 
 Project Stack::getElem()
 {

@@ -93,7 +93,7 @@ Genres Project::getGenre()
 void Project::setLanguages(int userLanguage)
 {
 	Languages language;
-	language.setID(userLanguage - 1);
+	language.setID(userLanguage);
 	this->languages.push_back(language);
 }
 
@@ -105,7 +105,7 @@ std::vector<Languages> Project::getLanguages()
 void Project::setLocations(int userLocations)
 {
 	Locations location;
-	location.setID(userLocations - 1);
+	location.setID(userLocations);
 	this->locations.push_back(location);
 }
 
@@ -154,10 +154,16 @@ int Project::getTicketSales()
 	return this->weeklyTicketSales;
 }
 
-void Project::setMaterials(Materials material)
+std::vector<Materials> Project::getMaterials()
 {
-	this->materials.push_back(material);
+	return this->materials;
 }
+
+void Project::setMaterials(std::vector<Materials> material)
+{
+	this->materials = materials;
+}
+
 //Validation function
 bool isInputStringValid(std::string stringCheck)
 {
@@ -176,6 +182,7 @@ bool isInputStringValid(std::string stringCheck)
 		return true;
 	}
 }
+
 //Display functions
 void clearScreen()
 {
@@ -579,6 +586,8 @@ void newProject()
 	}
 	clearScreen();
 	//Print out project details
+	std::cout << newProject;
+	/*
 	std::cout << "Project ID: " << std::to_string(newProject.getProjectID()) << std::endl;
 	std::cout << "Project Title: " << newProject.getTitle() << std::endl;
 	std::cout << "Project Summary: " << newProject.getSummary() << std::endl;
@@ -590,55 +599,62 @@ void newProject()
 	std::cout << "Project Keywords: " << keywordsToString(newProject.getKeywords()) << std::endl;
 	std::cout << "Project Status: " << filmStatusToString(newProject.getFilmStatus()) << std::endl;
 	std::cout << "Project Weekly Ticket Sales: " << ticketSalesToString(newProject.getTicketSales()) << std::endl;
-
+	*/
 
 	std::cout << "Project " + projectID + " Created!\n\n";
 	stack.addElem(newProject);
-	//test adding 2 to stack
-	Project duplicateProj = newProject;
-	stack.addElem(duplicateProj);
 }
 
-/* Override of the << operator that manipulates the underlying 
-*  classes, which have an override too, to return it to the 
-*  file manipulator class
+/* 
+*	Override of the << operator that manipulates the underlying 
+*	classes, which have an override too, to return it to the 
+*	file manipulator class
 */
 std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Project& pro)
 {
-
-	std::string listBeginning = "\"[";
-	std::string listEndings = "]\",";
-	os << pro.getProjectID()
-		<< pro.getTitle()
-		<< pro.getSummary()
-		<< pro.getReleaseDateAsString()
-		<< pro.getGenre()
-		<< pro.getRuntime()
-		<< pro.getFilmStatus()
+	const char comma = ',';
+	const char smColon = ';';
+	std::string listBeginning = "[";
+	std::string listEndings = "],";
+	os << pro.getProjectID() << comma
+		<< pro.getTitle() << comma
+		<< pro.getSummary() << comma
+		<< pro.getReleaseDateAsString() << comma
+		<< pro.getGenre() << comma
+		<< pro.getRuntime() << comma
+		<< pro.getFilmStatus() << comma
 		<< pro.getTicketSales();
 
 	// Iterate through the lists of elements to get and format IDS
 	// onto the CSV
 	os << listBeginning;
+
 	for (auto location : pro.getLocations())
 	{
-		os << "," << location;
+		os << smColon << location;
 	}
 	
 	os << listEndings << listBeginning;
 	
 	for (auto language : pro.getLanguages())
 	{
-		os << "," << language;
+		os << smColon << language;
 	}
 	os << listEndings << listBeginning;
 
 	for (auto keyword : pro.getKeywords())
 	{
-		os << keyword;
+		os << smColon << keyword;
 	}
-	os << listEndings;
+	os << listEndings << listBeginning;
 
+	for (auto material : pro.getMaterials())
+	{
+		os << material.getID();
+	}
+	
+	os << listEndings;
+	
 	return os;
 }
 

@@ -41,7 +41,7 @@ public:
 	void setKeywords(std::string userKeywords);
 	void setFilmStatus(int filmStatusID);
 	void setTicketSales(int userTicketSales);
-	void setMaterials(Materials material);
+	void setMaterials(std::vector<Materials> material);
 	
 	//Getting functions
 	int getProjectID();
@@ -57,6 +57,7 @@ public:
 	int getFilmStatus();
 	int getTicketSales();
 	std::vector <std::string> filmStatusList = { "Unreleased", "Now Playing", "Released" };
+	std::vector<Materials> getMaterials();
 	friend std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<char, std::char_traits<char>>& os, Project& pro);
 };
 

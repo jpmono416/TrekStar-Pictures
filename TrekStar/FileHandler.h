@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "TeamRoles.h"
 #include "Project.h"
 #include "Stack.h"
 #include <fstream>
@@ -11,15 +10,20 @@ public:
 	FileHandler();
 	~FileHandler();
 
-	bool updateTeamRoles(std::vector<TeamRoles> tr);
 	bool saveAllChanges(Stack projects);
-
 	std::string getFileContent() { return this->fileContent; }
+	Stack importData();
+	Materials parseMaterialCSV(std::string text);
+	Project parseProjectCSV(std::string text);
+	std::vector<std::string> splitStrings(std::string, char delim = ',');
 
+	template<typename Out>
+	void split(const std::string &s, char delim, Out result);
 
 private:
 	std::string fileContent;
 	const std::string separator = ",";
-	std::ofstream outStream;
+	std::ofstream projectsStream;
+	std::vector<Materials> materials;
 };
 
