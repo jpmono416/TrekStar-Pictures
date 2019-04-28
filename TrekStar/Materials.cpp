@@ -16,6 +16,11 @@ void Materials::setid(int id)
 	this->id = id;
 }
 
+void Materials::setProjectID(int id)
+{
+	this->projectID = id;
+}
+
 void Materials::setTitle(std::string title)
 {
 	this->title = title;
@@ -143,7 +148,6 @@ void Materials::setMaterialType(int id)
 		this->materialType = VHS;
 		break;
 	}
-	//this->materialType = SingleDVD; ?
 }
 
 int Materials::getMaterialType()

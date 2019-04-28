@@ -60,3 +60,7 @@ bool Stack::addElem(Project elem)
 	}
 	return false;
 }
+
+Project Stack::search(int z) {
+
+}
