@@ -8,23 +8,19 @@ Stack::Stack()
 
 Stack::~Stack()
 {
-	this->emptyStack();
 }
 
 // Return the data in  the order which the stack will process
-Project* Stack::emptyStack()
+void Stack::emptyStack(Project *arrayData)
 {
-	Project stackData[arraySize];
 	int arrayCounter = 0;
 	// Iterate backwards through the vector
 	int size = (sizeof(data) / sizeof(Project));
 	while (size >= 0 && arrayCounter <= 19)
 	{
-		stackData[arrayCounter] = (this->pop());
+		arrayData[arrayCounter] = (this->pop());
 		++arrayCounter;
 	}
-
-	return stackData;
 }
 
 

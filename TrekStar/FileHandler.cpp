@@ -16,7 +16,7 @@ bool FileHandler::saveAllChanges(Stack proj)
 	std::ofstream materialsStream;
 
 	Project* projects{ proj.getData() };
-	const int arrayLength = sizeof(projects) / sizeof(Project);
+	const size_t arrayLength = sizeof(projects) / sizeof(*projects);
 	this->projectsStream.open("projects.csv");
 
 	for (unsigned int counter = 0; counter <= arrayLength; ++counter)

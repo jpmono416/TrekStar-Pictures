@@ -17,7 +17,7 @@ public:
 	Stack();
 	~Stack();
 
-	Project* emptyStack();
+	void emptyStack(Project* arrayData);
 	Project getElem();
 	bool addElem(Project elem);
 	Project pop();
