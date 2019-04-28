@@ -628,7 +628,7 @@ std::basic_ostream<char, std::char_traits<char>>& operator<<(std::basic_ostream<
 		<< pro.getGenre() << comma
 		<< pro.getRuntime() << comma
 		<< pro.getFilmStatus() << comma
-		<< pro.getTicketSales();
+		<< pro.getTicketSales() << comma;
 
 	// Iterate through the lists of elements to get and format IDS
 	// onto the CSV
