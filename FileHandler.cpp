@@ -19,7 +19,7 @@ bool FileHandler::saveAllChanges(Stack proj)
 	const size_t arrayLength = sizeof(projects) / sizeof(*projects);
 	this->projectsStream.open("projects.csv");
 
-	for (unsigned int counter = 0; counter <= arrayLength; ++counter)
+	for (unsigned int counter = 0; counter < arrayLength; ++counter)
 	{
 		Project pr = projects[counter];
 		this->projectsStream << pr << std::endl;
