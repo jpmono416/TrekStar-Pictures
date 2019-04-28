@@ -58,7 +58,7 @@ void Project::setReleaseDate(std::string releaseDate)
 
 	sscanf_s(dateInput,"%d/%d/%d",&dd,&mm,&yy);
 	userReleaseDate.tm_mday = dd;
-	userReleaseDate.tm_mon = mm;
+	userReleaseDate.tm_mon = mm-1;
 	userReleaseDate.tm_year = yy;
 
 	this->releaseDate = userReleaseDate;
@@ -68,7 +68,7 @@ std::string Project::getReleaseDateAsString()
 {
 	int const bufferSize = 11;
 	char dateStr[bufferSize];
-	strftime(dateStr, bufferSize, "%d/%m/%Y", &this->getReleaseDate());
+	strftime(dateStr, bufferSize, "%d/%m/%y", &this->getReleaseDate());
 	return dateStr;
 }
 
@@ -590,8 +590,6 @@ Project Project::newProject()
 		newProject.setTicketSales(ticketSalesInt);
 	}
 	clearScreen();
-	//Print out project details
-	std::cout << newProject;
 
 	std::cout << "Project " + projectID + " Created!\n\n";
 	return newProject;
